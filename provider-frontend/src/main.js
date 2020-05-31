@@ -9,6 +9,13 @@ Vue.use(BootstrapVue);
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
+// Axios
+import axios from "axios";
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
+// Agregamos la URL base de nuestra API
+axios.defaults.baseURL = "http://localhost:5000/api/provider";
+
 Vue.config.productionTip = false;
 
 new Vue({
