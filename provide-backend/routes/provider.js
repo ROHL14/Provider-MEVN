@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 
 // importar el model Provider
-const { Provider } = require("../models");
+import Provider from "../models/Provider";
 
 // Agregar una nota
 router.post("/", async (req, res) => {
