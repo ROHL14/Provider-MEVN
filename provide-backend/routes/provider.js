@@ -52,13 +52,13 @@ router.get("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const _id = req.params.id;
   try {
-    const provider = await Provider.findById({ _id });
+    const provider = await Provider.findByIdAndDelete({ _id });
 
     if (!provider) {
       return res.status(404).json({ mensaje: "Proveedor no encontrado" });
     }
 
-    await provider.remove();
+    res.json(provider);
   } catch (error) {
     return res.status(400).json({
       mensaje: "Ocurrio un error",
