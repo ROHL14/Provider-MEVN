@@ -1,13 +1,15 @@
 <template>
-  <div>
-    <App />
+  <div class="container">
+    <Form />
+    <Table />
   </div>
 </template>
 
 <script>
-import App from "@/components/App.vue";
+import Form from "@/components/Form";
+import Table from "@/components/Table";
 export default {
   name: "Provider",
-  components: { App }
+  components: { Form, Table }
 };
 </script>
