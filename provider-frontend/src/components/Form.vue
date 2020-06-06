@@ -135,6 +135,7 @@ export default {
         this.mensaje.texto = "Proveedor Agregado!";
         this.mensaje.color = "success";
       });
+      this.getProviders();
     },
 
     editDeactivate: async function(id) {

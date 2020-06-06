@@ -53,7 +53,7 @@ export default {
     this.getProviders();
   },
   updated() {
-    this.getProviders();
+    //this.getProviders();
   },
   computed: {
     ...Vuex.mapState(["providers", "provider", "edit", "providerEdit"])
