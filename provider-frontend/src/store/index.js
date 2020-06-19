@@ -12,8 +12,8 @@ export default new Vuex.Store({
     providerEdit: {},
   },
   mutations: {
-    GET_PROVIDERS(state, providerAction) {
-      state.providers = providerAction;
+    GET_PROVIDERS: (state, data) => {
+      state.providers = data;
     },
     POST_PROVIDER: async (state, provider) => {
       state.provider = provider;

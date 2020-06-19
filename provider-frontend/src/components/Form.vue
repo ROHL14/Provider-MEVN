@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-4 pt-5">
     <h1>Proveedores</h1>
 
     <b-alert
@@ -10,7 +10,7 @@
       @dismiss-count-down="countDownChanged"
     >{{ mensaje.texto }}</b-alert>
 
-    <form @submit.prevent="updateProvider(providerEdit)" v-if="edit">
+    <form class="container col-6" @submit.prevent="updateProvider(providerEdit)" v-if="edit">
       <h3>Editar Proveedor</h3>
       <input
         required
@@ -41,7 +41,7 @@
       <b-button class="my-2" type="submit" @click="editDeactivate()">Cancelar</b-button>
     </form>
 
-    <form @submit.prevent="saveProvider(proveedor)" v-if="!edit">
+    <form class="container col-6" @submit.prevent="saveProvider(proveedor)" v-if="!edit">
       <h3>Agregar nuevo proveedor</h3>
       <input
         required
@@ -71,7 +71,7 @@
         placeholder="Compañia"
         v-model="proveedor.compañia"
       />
-      <b-button class="btn-success my-2 btn-block" type="submit">Agregar</b-button>
+      <PinkButton btnText="Agregar" type="submit" class="mt-3 mb-3" />
     </form>
   </div>
 </template>
@@ -79,8 +79,10 @@
 <script>
 import Vuex from "vuex";
 import store from "../store";
+import PinkButton from "./PinkButton";
 export default {
   name: "Form",
+  components: { PinkButton },
   data() {
     return {
       proveedor: {
@@ -103,9 +105,7 @@ export default {
     ...Vuex.mapActions([
       "getProviders",
       "postProvider",
-      "deleteProvider",
       "updateProvider",
-      "editActivate",
       "editDeactivate"
     ]),
     countDownChanged(dismissCountDown) {
@@ -155,3 +155,26 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+form {
+  animation: fade-in 2s both;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</style>

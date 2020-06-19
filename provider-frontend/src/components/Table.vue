@@ -12,6 +12,7 @@
       <thead>
         <tr class="bg-dark text-white">
           <th scope="col">#</th>
+
           <th scope="col">Nombre</th>
           <th scope="col">Telefono</th>
           <th scope="col">Dirección</th>
@@ -28,8 +29,12 @@
           <td>{{ item.direccion }}</td>
           <td>{{ item.compañia }}</td>
           <td>
-            <b-button @click="deleteProvider(item._id)" class="btn btn-danger btn-sm mx-2">Eliminar</b-button>
-            <b-button @click="editActivate(item._id)" class="btn btn-warning btn-sm">Editar</b-button>
+            <b-button @click="editActivate(item._id)" class="btn btn-warning btn-sm">
+              <i class="far fa-edit"></i>
+            </b-button>
+            <b-button @click="deleteProvider(item._id)" class="btn btn-danger btn-sm mx-2">
+              <i class="far fa-trash-alt"></i>
+            </b-button>
           </td>
         </tr>
       </tbody>
@@ -59,14 +64,7 @@ export default {
     ...Vuex.mapState(["providers", "provider", "edit", "providerEdit"])
   },
   methods: {
-    ...Vuex.mapActions([
-      "getProviders",
-      "postProvider",
-      "deleteProvider",
-      "updateProvider",
-      "editActivate",
-      "editDeactivate"
-    ]),
+    ...Vuex.mapActions(["getProviders", "deleteProvider", "editActivate"]),
     countDownChanged(dismissCountDown) {
       this.dismissCountDown = dismissCountDown;
     },
@@ -89,17 +87,34 @@ export default {
     },
     editActivate: async function(id) {
       await this.$store.dispatch("editActivate", id);
-    },
-    updateProvider: async function(providerUpdated) {
-      await this.$store.dispatch("updateProvider", providerUpdated).then(() => {
-        // Alerta de mensaje
-        this.showAlert();
-        this.mensaje.texto = "Proveedor Editado";
-        this.mensaje.color = "success";
-
-        this.editar = false;
-      });
     }
   }
 };
 </script>
+
+<style scoped>
+table {
+  animation: fade-in 2s 1s both;
+}
+
+tr {
+  animation: fade-in 1.5s both;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</style>
